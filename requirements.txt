@@ -2,5 +2,5 @@ fastapi
 uvicorn
 pandas
 textblob
-sklearn
+
 numpy
