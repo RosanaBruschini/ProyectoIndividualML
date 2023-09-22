@@ -19,7 +19,7 @@ df_fusion3 = pd.read_csv ("df_fusion3.csv")
 df_funcion5 = pd.read_csv ("df_funcion5.csv")
 
 
-app = FastAPI ()
+app = FastAPI (title="Bienvenidos A mi primera API")
 
 @app.get("/", include_in_schema=False)
 def index():
