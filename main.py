@@ -3,6 +3,9 @@ import uvicorn
 import pandas as pd
 from fastapi.responses import RedirectResponse
 from textblob import TextBlob 
+from sklearn.model_selection import train_test_split
+from sklearn.decomposition import PCA
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 
@@ -83,28 +86,27 @@ def countreviews(start_date: str, end_date: str,) -> dict:
 
 @app.get ("/def genre/ {genero}")
 
-def genre(genero: str):
-    try:
-        # Filtrar el DataFrame para obtener las filas del género especificado
-        genre_df = df_fusion3[df_fusion3['app_name'] == genero]
+def genre(genero:str):
+    # Filtra el DataFrame para quedarte solo con las filas donde el género tiene un valor mayor que 0
+    df_genre = df_fusion3[df_fusion3[genero] > 0]
 
-        # Verificar si el DataFrame filtrado no está vacío
-        if genre_df.empty:
-            return "Género no encontrado en el DataFrame"
+    # Ordena el DataFrame por la columna 'playtime_forever' de manera descendente
+    df_sorted = df_genre.sort_values(by='playtime_forever', ascending=False)
 
-        # Calcular la posición del género en el ranking según el tiempo de juego 'playtime_forever'
-        genre_ranking = genre_df.groupby('app_name')['playtime_forever'].sum().reset_index()
-        genre_ranking = genre_ranking.sort_values(by='playtime_forever', ascending=False)
-        position = genre_ranking[genre_ranking['app_name'] == genero].index[0] + 1
+    # Resetea el índice del DataFrame ordenado
+    df_sorted.reset_index(drop=True, inplace=True)
 
-        # Crear un diccionario con la posición y el nombre del género
-        result_dict = {
-            "Posición": position,
-            "Género": genero
-        }
-        return result_dict
-    except IndexError:
-        return "Género no encontrado en el ranking"
+    # Encuentra la posición del género en el DataFrame ordenado
+    position = df_sorted[df_sorted[genero] > 0].index[0] + 1
+
+    # Crear un diccionario con la respuesta
+    response = {
+    
+        'Genero': genero,
+        "position de ranking": position
+    }
+
+    return response
    
    
     
@@ -165,3 +167,26 @@ def developer(desarrollador: str):
         return resultado_lista
     except KeyError:
         return f"Desarrollador '{desarrollador}' no encontrado en el DataFrame"
+    
+    
+    # Modelo Machine Learning
+@app.get ("/def get_item_recommendations/ {item_id_referencia}")
+
+# Definir una función para obtener las recomendaciones para un ítem de referencia
+def get_item_recommendations(item_id_referencia, item_similarity_df, num_recommendations=5):
+    # Calcular la similitud de coseno entre el ítem de referencia y todos los demás ítems
+    similarities = item_similarity_df[item_id_referencia]
+    
+    # Ordenar los ítems en función de su similitud de coseno (en orden descendente)
+    recomendaciones = similarities.sort_values(ascending=False)
+    
+    # Eliminar el ítem de referencia de la lista de recomendaciones (si está presente)
+    if item_id_referencia in recomendaciones:
+        recomendaciones = recomendaciones.drop(item_id_referencia)
+    
+    # Tomar los primeros "num_recommendations" ítems como recomendaciones
+    top_recommendations = recomendaciones.head(num_recommendations)
+    
+    return top_recommendations
+    
+    
