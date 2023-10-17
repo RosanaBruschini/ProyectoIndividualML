@@ -1,7 +1,8 @@
-# ProyectoIndividualML
+                                                                                                                                                                      
+                                                                                                                                                     *😊Linkedin*:https://www.linkedin.com/in/robruschini/
 
-# ProyectoIndividualML - Trabajo como Data Scientist en Steam, una plataforma multinacional de videojuegos.
-# Proyecto MLOps: Sistema de Recomendación de Videojuegos  🎮
+# 🕹️🎯 ProyectoIndividualML - Trabajo como Data Scientist en Steam, una plataforma multinacional de videojuegos.🎮✨
+## Proyecto MLOps: Sistema de Recomendación de Videojuegos  🎮
 
 **Objetivo Principal**🎯
 Desarrollar un sistema de recomendación de videojuegos para la plataforma Steam. Con el fin de mejorar la experiencia de los usuarios al sugerir juegos relevantes y atractivos
@@ -48,10 +49,10 @@ Se diseñó un sistema de recomendación basado en filtrado colaborativo que uti
 > Define una función para obtener recomendaciones de ítems basadas en la similitud.
 > Utiliza la función para obtener recomendaciones para un ítem de referencia.
 
+# Link Railway: proyectoindividualml-production.up.railway.app
+
 
 # Anexos
-
-*Linkedin*:https://www.linkedin.com/in/robruschini/
 
 **Link drive a archivos originales**: https://drive.google.com/drive/folders/1f6SyIawen1rKy9I8YbIvnuDMYP4diBGH?usp=sharing
 
