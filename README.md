@@ -1,5 +1,4 @@
-                                                                                                                                                                      
-                                                                                                                                                     *😊Linkedin*:https://www.linkedin.com/in/robruschini/
+                                                                                                                                                                                                                    *😊Linkedin*:https://www.linkedin.com/in/robruschini/
 
 # 🕹️🎯 ProyectoIndividualML - Trabajo como Data Scientist en Steam, una plataforma multinacional de videojuegos.🎮✨
 ## Proyecto MLOps: Sistema de Recomendación de Videojuegos  🎮
