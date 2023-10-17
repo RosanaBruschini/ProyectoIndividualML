@@ -4,6 +4,7 @@
 ## Proyecto MLOps: Sistema de Recomendación de Videojuegos  🎮
 
 **Objetivo Principal**🎯
+
 Desarrollar un sistema de recomendación de videojuegos para la plataforma Steam. Con el fin de mejorar la experiencia de los usuarios al sugerir juegos relevantes y atractivos
 
 > # 1. Extracción, transformación 🧹| Análisis Exploratorio de Datos|📈 
